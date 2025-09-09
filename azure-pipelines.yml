@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'sandeep'   # self-hosted agent
 
 
 steps:
