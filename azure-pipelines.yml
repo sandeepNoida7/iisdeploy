@@ -1,0 +1,24 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+
+steps:
+- task: DotNetCoreCLI@2   # Task for .NET Core CLI
+  inputs:
+    command: publish   # Runs dotnet publish
+    publishWebProjects: True   # Publishes all web projects
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)' 
+    zipAfterPublish: True   # Zips the publish output
+
+- task: PublishBuildArtifacts@1   # Publishes artifacts
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'   # Directory to publish
+    artifactName: 'myWebsiteName'   # Artifact name in DevOps
