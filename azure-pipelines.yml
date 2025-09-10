@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: 'sandeep'   # self-hosted agent
+  name: 'LAPTOP-MRBGNI3K'   # self-hosted agent
 
 
 steps:
